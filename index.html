@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Atendimento ao Aluno | Etec Prof. Dr. José Dagnoni</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img src="assets/logo-etec.png" alt="Etec Prof. Dr. José Dagnoni - Santa Bárbara D'Oeste" class="logo"
+           onerror="this.style.display='none';document.getElementById('logoFallback').style.display='block'">
+      <div id="logoFallback" class="logo-fallback">
+        <strong>Etec</strong><span>Prof. Dr. José Dagnoni</span><small>Santa Bárbara D'Oeste</small>
+      </div>
+    </div>
+    <div class="brand-cps">Centro Paula Souza</div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab active" data-tab="home">Início</button>
+    <button class="tab" data-tab="novo">Abrir Solicitação</button>
+    <button class="tab" data-tab="consulta">Consultar Protocolo</button>
+    <button class="tab" data-tab="faq">Perguntas Frequentes</button>
+    <button class="tab" data-tab="painel">Painel da Secretaria</button>
+  </nav>
+
+  <main>
+    <!-- INÍCIO -->
+    <section id="home" class="panel active">
+      <div class="hero">
+        <h1>Atendimento ao Aluno</h1>
+        <p>Abra solicitações, acompanhe protocolos e tire dúvidas sobre a vida acadêmica na Etec.</p>
+        <button class="btn" data-go="novo">Abrir solicitação</button>
+      </div>
+      <div class="cards">
+        <article class="card"><h3>📄 Documentos</h3><p>Declaração de matrícula, histórico escolar, atestados e transferência.</p></article>
+        <article class="card"><h3>📚 Acadêmico</h3><p>Notas, frequência, recuperação, estágio e TCC.</p></article>
+        <article class="card"><h3>🚌 Benefícios</h3><p>Passe escolar, merenda e auxílios estudantis.</p></article>
+        <article class="card"><h3>💬 Outros</h3><p>Sugestões, elogios, reclamações e demais assuntos.</p></article>
+      </div>
+      <div class="stats" id="stats"></div>
+    </section>
+
+    <!-- NOVA SOLICITAÇÃO -->
+    <section id="novo" class="panel">
+      <h2>Abrir Solicitação</h2>
+      <form id="formNovo" class="form">
+        <label>Nome completo<input name="nome" required></label>
+        <label>RM (matrícula)<input name="rm" required inputmode="numeric"></label>
+        <label>E-mail<input type="email" name="email" required></label>
+        <label>Curso
+          <select name="curso" required>
+            <option value="">Selecione...</option>
+            <option>Desenvolvimento de Sistemas</option>
+            <option>Administração</option>
+            <option>Informática para Internet</option>
+            <option>Ensino Médio</option>
+            <option>Outro</option>
+          </select>
+        </label>
+        <label>Categoria
+          <select name="categoria" required>
+            <option value="">Selecione...</option>
+            <option>Documentos</option>
+            <option>Acadêmico</option>
+            <option>Benefícios</option>
+            <option>Sugestão / Reclamação</option>
+            <option>Outros</option>
+          </select>
+        </label>
+        <label>Prioridade
+          <select name="prioridade">
+            <option>Normal</option><option>Alta</option><option>Baixa</option>
+          </select>
+        </label>
+        <label class="full">Descreva sua solicitação<textarea name="mensagem" rows="5" required></textarea></label>
+        <button class="btn full" type="submit">Enviar solicitação</button>
+      </form>
+      <div id="resultadoNovo" class="notice" hidden></div>
+    </section>
+
+    <!-- CONSULTA -->
+    <section id="consulta" class="panel">
+      <h2>Consultar Protocolo</h2>
+      <form id="formConsulta" class="form inline">
+        <label>Número do protocolo<input id="protocoloBusca" placeholder="Ex.: ETEC-2026-0001" required></label>
+        <button class="btn" type="submit">Consultar</button>
+      </form>
+      <div id="resultadoConsulta"></div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="panel">
+      <h2>Perguntas Frequentes</h2>
+      <div id="faqList"></div>
+    </section>
+
+    <!-- PAINEL -->
+    <section id="painel" class="panel">
+      <h2>Painel da Secretaria</h2>
+      <div class="filters">
+        <select id="fStatus">
+          <option value="">Todos os status</option>
+          <option>Aberto</option><option>Em andamento</option><option>Concluído</option>
+        </select>
+        <select id="fCategoria">
+          <option value="">Todas as categorias</option>
+          <option>Documentos</option><option>Acadêmico</option><option>Benefícios</option>
+          <option>Sugestão / Reclamação</option><option>Outros</option>
+        </select>
+        <input id="fBusca" placeholder="Buscar por nome, RM ou protocolo">
+      </div>
+      <div id="listaChamados"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Etec Prof. Dr. José Dagnoni · Santa Bárbara D'Oeste · Centro Paula Souza</p>
+    <p class="small">Projeto acadêmico criado com Vibe Coding (Google AI Studio).</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
